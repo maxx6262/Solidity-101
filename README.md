@@ -1,18 +1,34 @@
-# Solidity-101
-Dacade Solidity course : NFTea contract and auctioner
-1. NFTea : An ERC721 with URI, Metadata, and Ownability features
-  # Deployed on Rinkeby : 0x67F98fb190516A3b982d606F2d4a00F187af90fe
-     "Simple & educational collection of 7 mintable tokens"
-  # Contract owner will be able to manage fees settings and mint timing
-     Owner would also definitively renounce to its ownership, or reduce amount of mintable tokens
-  # Token owner will be able to burn tokens
-  # To launch minter, owner has to enable it
-2. Thanks to the standard URI format used, token's UTIs are findable in IPFS with CID 'QmNccL3Nq5mk1rWJ5ouq2nf8gvAv74mtsYLWZ4RBbdWRmM' 
-  # Token are seeable in Opensea's testnet account :
-  # Tokens are tradable, transferrable or burnable
-4. NFT_Auctions :
-  # Fixed price : Using contract as escrow and marketplace solution
-  # BidsAuction : For determined time, anyone could make higher bid than previous one. 
-    => Payback automatic at new Bid submission
-    => Fees level manageable by contract owner 
-    => Regular withdrawability
+<h1> NFTea - NFT_Auctions : Dacade Solidity-101 challenge submission <h1> 
+<em> NFTea is crypto-collectible contract based on <strong> ERC721, ERC721Metadata, ERC721StorageURI </strong> standards supplied by @openzeppelin </em>
+  <h2> NFTea : An ERC721 with URI, Metadata, and Ownability features </h2>
+  <em>  # Deployed on Rinkeby : </em>
+<p>
+  tx: 0x67F98fb190516A3b982d606F2d4a00F187af90fe
+  <i> "Simple & educational collection of 7 mintable tokens" </i>
+  </p>
+  <ul>
+    <li> Contract owner will be able to manage fees settings and mint timing. </br>
+    <em> Owner would also definitively renounce to its ownership, or reduce amount of mintable tokens </em> </li>
+  <li> Token owner will be able to <strong> burn </strong> tokens </li>
+  <li> To launch minter, owner has to enable it </li>
+</ul>
+<h2> NFTeas's token URI are findable from IPFS with CID <strong> 'QmNccL3Nq5mk1rWJ5ouq2nf8gvAv74mtsYLWZ4RBbdWRmM' </strong>
+  <h3> Token are seeable in Opensea's testnet account </h3>
+  <h3> Tokens are tradable, transferrable or burnable </h3>
+  <h2> NFT_Auctions contract </h2>
+  <em> Marketplace and excrow for trade transactions and sale auctions </em>
+  <h3> Fixed price </h3>
+  <p> Using contract as escrow or/and marketplace solution </p>
+  <h3> BidsAuction </h3>
+  <ul>
+    <li> For determined time </li>
+    <li> floor price </li>
+    <li> Bids dinamically paid </li>
+  </ul>
+  <strong> anyone could make higher bid than previous one. </strong> 
+<em> <ul>
+  <li> Payback automatic at new Bid submission </li>
+  <li> Fees level manageable by contract owner </li> 
+  <li> Regular withdrawability </li>
+  </ul> </em>
+  
