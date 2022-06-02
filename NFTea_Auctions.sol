@@ -19,7 +19,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
     IERC721 public nft;
 
     uint public newBidsAuctionFees = 1500 gwei;
-    uint public saleFees = 0.1;
+    uint public saleFees = 10 ;
 
      constructor(address _tokenContractAddress, string memory _contractName) {
          nft = IERC721(_tokenContractAddress) ;
@@ -31,7 +31,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
      }
 
      function updateSaleFees(uint _newSaleFees) public onlyOwner {
-         require(_newSaleFees < 1, "Fees part can't be more than 100%");
+         require(_newSaleFees < 100, "Fees part can't be more than 100%");
          saleFees = _newSaleFees;
      }
 
@@ -85,7 +85,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
     function _forceEndAuction(uint tokenId) private returns (bool isSold) {
         require(_isOnAuction(tokenId), "NFT_Auction: Token not on auction");
         uint auctionId = tokenToBidsAuction[tokenId];
-        BidsAuction auction = bidsAuctions[auctionId];
+        BidsAuction storage auction = bidsAuctions[auctionId];
         if (auction.nbBids > 0) {
             _closeWinningBid(auction.higesthBid);
         }
@@ -161,9 +161,9 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
     function _closeWinningBid(uint bidId) private {
         require(bids[bidId].active, "NFT_Auctions - closing Bid error: bid still inactive");
         uint tokenId = bidsAuctions[bids[bidId].auctionId].tokenId;
-        feesAmount += saleFees * bids[bidId].amount;
+        feesAmount += (saleFees * bids[bidId].amount) / 100;
         emit NewSale(tokenId, nft.ownerOf(tokenId), bidToOwner[bidId], bids[bidId].amount );
-        nft.ownerOf(tokenId).call{value: bids[bidId].amount * (1 - saleFees)}("");
+        nft.ownerOf(tokenId).call{value: bids[bidId].amount * ((100 - saleFees) / 100)}("");
         nft.safeTransferFrom(address(this), bidToOwner[bidId], tokenId);
         bids[bidId].active = false;
     }
@@ -187,7 +187,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
     function buyFixedPriceToken(uint _tokenId) external payable {
         require(msg.value >= fixedPrices[_tokenId], "NFT_Auction: Not enough money to pay item");
         require(fixedPrices[_tokenId] > 0, "NFT_Auction: Token is not on sale");
-        uint tokenSaleFees = fixedPrices[_tokenId] * saleFees;
+        uint tokenSaleFees = fixedPrices[_tokenId] * saleFees / 100;
         uint tokensaleAmount = msg.value - tokenSaleFees; 
         emit NewSale(_tokenId, nft.ownerOf(_tokenId), msg.sender, msg.value);
         payable(nft.ownerOf(_tokenId)).call{value: tokensaleAmount}("");
