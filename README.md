@@ -5,6 +5,7 @@
 <p>
   tx: 0x67F98fb190516A3b982d606F2d4a00F187af90fe
   <i> "Simple & educational collection of 7 mintable tokens" </i>
+  <em> Solidity added documentation at compilater : https://ipfs.io/ipfs/QmPFzo6XBEJPjscRi27GqKARayKYcm9MBt8obnKhDqMACc </em>
   </p>
   <ul>
     <li> Contract owner will be able to manage fees settings and mint timing. </br>
