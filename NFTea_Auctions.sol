@@ -209,7 +209,4 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
         feesAmount += tokenSaleFees;
         fixedPrices[_tokenId] = 0;
     }
-     
-
-
  }
