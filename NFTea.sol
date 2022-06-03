@@ -16,11 +16,11 @@ contract NFTea is ERC721 , Ownable {
     // maxSupply = maximum Supply of NFTeas token
     uint private maxSupply = 7;
     // totalMinted amount of minted tokens
-    uint private totalMinted = 0;
+    uint public totalMinted = 0;
     // burned tokens amount
     uint private burnedTokensAmount = 0;
     // current supply = total minted - burned amount
-    uint private currentSupply = 0 ;
+    uint public currentSupply = 0 ;
     //mintFees is minting fees to pay to the contract
     uint mintFees = 0 gwei;
     // mintable when contract is active and current supply still under maxSupply
@@ -136,37 +136,11 @@ contract NFTea is ERC721 , Ownable {
     }
 
     /**
-     * @dev _setNewFees
-       * @param _newFeesAmount : New fee amount to be paid in gwei
-       * @dev fees to pay to the contract at mintage
+     * @param _newMintFeesAmount : New fee amount to be paid in gwei
+     * @dev fees to pay to the contract at mintage
        */
     function _setNewMintFees(uint _newMintFeesAmount) public onlyOwner {
-        mintFees = _newFeesAmount * 1 gwei;
+        mintFees = _newMintFeesAmount * 1 gwei;
     }
 
-            // 2nd market P2P Exchange and auction management
-    event PutOnSale(uint tokenId, uint fixedPrice);
-
-    event NewSale(address seller, address buyer, uint tokenId, uint price);
-
-    
-    // Mapping for on-sale at fixed price tokens - null price => item not on sale
-    mapping(uint => uint) private onSaleFixedPriceTokens;
-
-
-    struct fixedPriceOffer {
-        uint        price,
-    } 
-    
-    mapping(uint => uint)
-    
-
-    /**
-     * @param _price amount to be paid to buy item in gwei
-     * @dev put token on sale at fixed price
-     */
-     function putOnSale(uint _tokenId, uint _price) external {
-         require(ownerOf(_tokenId) == msg.sender || getApproved(_tokenId) == msg.sender, "NFTea: Caller is not token owner nor approved");
-         require(_price > 0, "NFTea: Price must be > 0");
-     }
-} 
+}
