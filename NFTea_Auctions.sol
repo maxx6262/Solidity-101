@@ -38,7 +38,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
         // Withdrawal of earning fees to owner
      function withdrawal() public {
          require(feesAmount > 0 , "No amount to withdraw");
-         payable(owner).call{value: feesAmount}("");
+         payable(owner()).call{value: feesAmount}("");
          feesAmount = 0;
      }
 
@@ -49,7 +49,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
                  _forceEndBidAuction(i);
              }
          }
-         payable(owner).call{value: this.balance}("");
+         payable(owner()).call{value: address(this).balance}("");
          feesAmount = 0;
      }
 
@@ -77,12 +77,12 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
     
         // There will be only one active auction by token 
     function _isOnAuction(uint tokenId) public view returns (bool) {
-        require(tokenId < nft.totalMinted, "NFT_Auction: Token never minted");
+        require(nft.ownerOf(tokenId) != address(0), "NFT_Auction: Token never minted or burnt");
         uint auctionId = tokenToBidsAuction[tokenId];
         return bidsAuctions[auctionId].ended;
     }
         // Ending auction 
-    function _forceEndAuction(uint tokenId) private returns (bool isSold) {
+    function _forceEndAuction(uint tokenId) private {
         require(_isOnAuction(tokenId), "NFT_Auction: Token not on auction");
         uint auctionId = tokenToBidsAuction[tokenId];
         BidsAuction storage auction = bidsAuctions[auctionId];
@@ -91,7 +91,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
         }
         auction.endAt = block.timestamp;
         auction.ended = true;
-        tokenToBidsAuction = 0;
+        tokenToBidsAuction[tokenId] = 0;
     }
 
     function endAuction(uint auctionId) external {
@@ -110,9 +110,9 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
             _forceEndAuction(_tokenId);
         } else {
             nbBidsAuctions++;
-            BidsAuction memory auction = new BidsAuction(_tokenId, _startAt, _endAt, _floorPrice, 0, 0, false, false );
-            auction.started = auction.startAt <= block.timestamp;
-            bidsAuctions[nbBidsAuctions] = auction;
+            BidsAuction memory _newAuction = BidsAuction(_tokenId, _startAt, _endAt, _floorPrice, 0, 0, false, false );
+            _newAuction.started = _newAuction.startAt <= block.timestamp;
+            bidsAuctions[nbBidsAuctions] = _newAuction;
             tokenToBidsAuction[_tokenId] = nbBidsAuctions;
             emit NewBidsAuction(_tokenId, _startAt, _endAt, _floorPrice);
         }
@@ -140,7 +140,7 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
 
     function newBid(uint auctionId, uint bid) external payable {
         require(msg.value >= bid, "NFT_Auctions - newBid error: not enough to make bid");
-        require(bids[bidsAuctions[auctionId].higesthBid], "NFT_Auctions - newBid error: Bid amount under current highest bid");
+        require(bids[bidsAuctions[auctionId].higesthBid].amount < bid, "NFT_Auctions - newBid error: Bid amount under current highest bid");
         require(bidsAuctions[auctionId].floorPrice <= bid, "NFT_Auctions - newBid error: Bid amount under floor price");
         require(bidsAuctions[auctionId].started && ! bidsAuctions[auctionId].ended, "NFT_Auctions - newBid error: Auction is not active");
             // if previous bid, payback them
