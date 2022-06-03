@@ -1,0 +1,10 @@
+{
+  "name": "Tencha#1",
+  "description": "Kind of steamed green teas",
+  "image": "https://ipfs.io/ipfs/QmR3YKxXeDaxGrUJTiS5AZuBALGiKjmU5RS6M7RPyVjXRA/Tencha.png",
+  "attributes": [
+    { "color": "green" },
+    { "usage": "matcha" },
+    { "rare": "50" }
+  ]
+}

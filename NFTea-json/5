@@ -1,0 +1,10 @@
+{
+  "name": "HoJicha#2",
+  "description": "Japanese green tea with delicate flavour",
+  "image": "https://ipfs.io/ipfs/QmR3YKxXeDaxGrUJTiS5AZuBALGiKjmU5RS6M7RPyVjXRA/hojicha.png",
+  "attributes": [
+    { "color": "green tea" },
+    { "usage": "Because less amount of caffeine, popular to serve before sleep, during evening, and to children" },
+    { "rare": "35" }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "title": "Asset Metadata",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Identifies the asset to which this NFT represents"
+    },
+    "description": {
+      "type": "string",
+      "description": "Describes the asset to which this NFT represents"
+    },
+    "image": {
+      "type": "string",
+      "description": "A URI pointing to a ressource with mime type image/* representing the asset to which this NFT represents. Consider making any image at a width betweeb 320 and 1090 pixels and aspect ration between 1.91:1 and 4:5 inclusiveé"
+    },
+    "attributes": {
+      "color": {
+        "type": "string",
+        "description": "Colour of Tea variety to which this NFT represents"
+      },
+      "usage": {
+        "type": "string",
+        "description": "Indication on usual usage for tea variety to which this NFT represents"
+      },
+      "rare": {
+        "type": "string",
+        "description": "Numerical Indicator representing raribility of this item in collection between 0(current item) and 100(unique)"
+      }
+    }
+  }
+}

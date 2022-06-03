@@ -1,0 +1,10 @@
+{
+  "name": "GenMaicha#1",
+  "description": "Japanese Brown Rice green tea",
+  "image": "https://ipfs.io/ipfs/QmR3YKxXeDaxGrUJTiS5AZuBALGiKjmU5RS6M7RPyVjXRA/genmaicha.png",
+  "attributes": [
+    { "color": "brown green" },
+    { "usage": "Add Matcha to increase flavor" },
+    { "rare": "15" }
+  ]
+}
