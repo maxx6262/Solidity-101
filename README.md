@@ -3,7 +3,8 @@
   <h2> NFTea : An ERC721 with URI, Metadata, and Ownability features </h2>
   <em>  # Deployed on Rinkeby : </em>
 <p>
-  tx: 0x67F98fb190516A3b982d606F2d4a00F187af90fe
+  <h5> token address </h5>
+  <p> 0x80d9d3cd60Da9BF8B92aE0c5620405ACD9f1DFCf </p>
   <i> "Simple & educational collection of 7 mintable tokens" </i>
   <em> Solidity added documentation at compilater : https://ipfs.io/ipfs/QmPFzo6XBEJPjscRi27GqKARayKYcm9MBt8obnKhDqMACc </em>
   </p>
@@ -17,7 +18,10 @@
   <h4> Token are seeable in Opensea's testnet account </h4>
   <h4> Tokens are tradable, transferrable or burnable </h4>
 <h2> NFT_Auctions contract </h2>
-  <i>  Marketplace and excrow for trade transactions and sale auctions </i>
+<i> Deployed on Rinkeby to manage NFTeas token tradabilities </i>
+<h5> Contract address </h5>
+<p> 0x94B87e1cc25D32705a9fB6e5a9d36D89252e93A7 </p>
+<h3>  Marketplace and excrow for trade transactions and sale auctions </h3>
   <em> Solidity added documentation at compilater : https://ipfs.io/ipfs/QmbYD1nu115yPeN58Gr6wffesf2waPFjKQe2irERQDVni3 </em>
   <h3> Fixed price </h3>
   <p> Using contract as escrow or/and marketplace solution </p>
