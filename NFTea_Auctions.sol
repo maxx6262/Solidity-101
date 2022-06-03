@@ -103,9 +103,23 @@ import "@openzeppelin/contracts@4.4.0/access/Ownable.sol";
         bidsAuctions[auctionId].ended = true;
     }
 
+    function createBidsAuction(uint _tokenId, uint _floorPrice) external payable {
+        require(msg.value >= newBidsAuctionFees, "NFT_Auction: not enough to cover fees");
+        require(nft.ownerOf(_tokenId) == msg.sender || nft.getApproved(_tokenId) == msg.sender, "NFT_Auction: Caller is not token owner nor approved");
+        uint _startAt = block.timestamp;
+        uint _endAt = _startAt + 10 days;
+        feesAmount += msg.value;
+        _createBidsAuction(_tokenId, _floorPrice, _startAt, _endAt);
+    }
+
     function createBidsAuction(uint _tokenId, uint _floorPrice, uint _startAt, uint _endAt) external payable {
         require(msg.value >= newBidsAuctionFees, "NFT_Auction: not enough to cover fees");
         require(nft.ownerOf(_tokenId) == msg.sender || nft.getApproved(_tokenId) == msg.sender, "NFT_Auction: Caller is not token owner nor approved");
+        feesAmount += msg.value;
+        _createBidsAuction(_tokenId, _floorPrice, _startAt, _endAt);
+    }
+
+    function _createBidsAuction(uint _tokenId, uint _floorPrice, uint _startAt, uint _endAt) private {
         if (_isOnAuction(_tokenId)) {
             _forceEndAuction(_tokenId);
         } else {
