@@ -15,7 +15,9 @@
   <li> To launch minter, owner has to enable it </li>
 </ul>
 <h3> NFTeas's token URI are findable from IPFS with CID <strong> 'QmNccL3Nq5mk1rWJ5ouq2nf8gvAv74mtsYLWZ4RBbdWRmM' </strong> </h3>
-  <h4> Token are seeable in Opensea's testnet account </h4>
+  <h4> Token are seeable in @Opensea testnet account </h4>
+  ![image](https://user-images.githubusercontent.com/37675007/171760595-6aba9b5a-bc62-4931-a0c0-9394f31b5084.png)
+
   <h4> Tokens are tradable, transferrable or burnable </h4>
 <h2> NFT_Auctions contract </h2>
 <i> Deployed on Rinkeby to manage NFTeas token tradabilities </i>
