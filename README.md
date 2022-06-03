@@ -13,11 +13,12 @@
   <li> Token owner will be able to <strong> burn </strong> tokens </li>
   <li> To launch minter, owner has to enable it </li>
 </ul>
-<h2> NFTeas's token URI are findable from IPFS with CID <strong> 'QmNccL3Nq5mk1rWJ5ouq2nf8gvAv74mtsYLWZ4RBbdWRmM' </strong>
-  <h3> Token are seeable in Opensea's testnet account </h3>
-  <h3> Tokens are tradable, transferrable or burnable </h3>
-  <h2> NFT_Auctions contract </h2>
-  <em> Marketplace and excrow for trade transactions and sale auctions </em>
+<h3> NFTeas's token URI are findable from IPFS with CID <strong> 'QmNccL3Nq5mk1rWJ5ouq2nf8gvAv74mtsYLWZ4RBbdWRmM' </strong> </h3>
+  <h4> Token are seeable in Opensea's testnet account </h4>
+  <h4> Tokens are tradable, transferrable or burnable </h4>
+<h2> NFT_Auctions contract </h2>
+  <i>  Marketplace and excrow for trade transactions and sale auctions </i>
+  <em> Solidity added documentation at compilater : https://ipfs.io/ipfs/QmbYD1nu115yPeN58Gr6wffesf2waPFjKQe2irERQDVni3 </em>
   <h3> Fixed price </h3>
   <p> Using contract as escrow or/and marketplace solution </p>
   <h3> BidsAuction </h3>
